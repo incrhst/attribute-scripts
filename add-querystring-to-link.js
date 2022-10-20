@@ -5,18 +5,16 @@ Webflow.push(function () {
 plans = $("*[data-qs-plan]");
 plans.each(function () {    
  var href = $(this).attr('href');
- var plan = $(this).attr('data-qs-plan'); 
+ var plan = $(this).attr('data-qs-plan');
+ var message = $(this).attr('data-qs-message'); 
  var plan_description = $(this).attr('data-qs-service-description');
  var plan_service_type = $(this).attr('data-qs-service-type');
  var query = "";
  if (!href.includes('?plan=')) { 
       query += `?plan=${plan}`;
  }
- if (!href.includes('service-description=')) { 
-      query += `&service-description=${plan_description}`;
- }
- if (!href.includes('service-type=')) { 
-      query += `&service-type=${plan_service_type}`;
+  if (!href.includes('message=')) { 
+      query += `&message=${message}`;
  }
 
  $(this).attr('href',`${href}${query}`);
